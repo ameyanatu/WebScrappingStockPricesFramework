@@ -12,7 +12,7 @@ class StockPricesScrapping(object):
         self.driver = webdriver.Chrome()
         driver = self.driver
         driver.get(PageObjectFunc.getURL())
-        StockList = ExcelFuncs.getStocksList('C:\Users\user\PycharmProjects\WebScrappingStockPrices\ExcelSheet\Target.xlsx')
+        StockList = ExcelFuncs.getStocksList('C:\Users\user\PycharmProjects\WebScrappingStockPrices\WebScrappingStockPricesFramework\ExcelSheet\Target.xlsx')
         CurrentPriceList = list()
         Counter = 1
         for stock in StockList:
@@ -23,7 +23,7 @@ class StockPricesScrapping(object):
             SearchButton = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="queryTop"]/div/div[3]/div/input')))
             SearchButton.click()
             #CurrentPriceList.append(float(PageObjectFunc.getStockPriceLabel(driver).text.replace(",", "")))
-            ExcelFuncs.writeStockPrices(float(PageObjectFunc.getStockPriceLabel(driver).text.replace(",", "")),'C:\Users\user\PycharmProjects\WebScrappingStockPrices\ExcelSheet\Target.xlsx',Counter)
+            ExcelFuncs.writeStockPrices(float(PageObjectFunc.getStockPriceLabel(driver).text.replace(",", "")),'C:\Users\user\PycharmProjects\WebScrappingStockPrices\WebScrappingStockPricesFramework\ExcelSheet\Target.xlsx',Counter)
             print PageObjectFunc.getStockPriceLabel(driver).text.replace(",", "")
             SearchTextBox = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, 'srchword')))
             SearchTextBox.clear()
